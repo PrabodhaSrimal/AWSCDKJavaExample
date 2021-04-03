@@ -36,8 +36,8 @@ public class BackendHandler implements RequestHandler<SQSEvent, String> {
         }
 
 
-        final String destKey =  "/backend/" + context.getAwsRequestId();
-        logger.log("Writing to: " + bucketName + destKey);
+        final String destKey =  "backend/" + context.getAwsRequestId();
+        logger.log("Writing to: " + bucketName  + "/" + destKey);
         try {
             s3Client.putObject(bucketName, destKey, gson.toJson(event));
         } catch (AmazonServiceException e) {

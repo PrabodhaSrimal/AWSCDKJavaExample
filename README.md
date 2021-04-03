@@ -1,5 +1,8 @@
 # Example Java app deployed with AWS CDK
 
+## Architecture
+
+![architecture](doc/aws_cdk_java.svg)
 ## Project Setup
 
 Generate root project

@@ -28,6 +28,7 @@ public class BackendService extends Construct {
             .blockPublicAccess(BlockPublicAccess.BLOCK_ALL)
             .versioned(false)
             .removalPolicy(RemovalPolicy.DESTROY)
+            .autoDeleteObjects(true)
             .build();
 
         queue = Queue.Builder.create(this, "backend-queue")
@@ -39,6 +40,7 @@ public class BackendService extends Construct {
             .handler("com.myapp.BackendHandler::handleRequest")
             .runtime(Runtime.JAVA_8)
             .timeout(Duration.seconds(10))
+            .memorySize(512)
             .code(Code.fromAsset("../backend/target/backend-0.1.jar"))
             .events(Arrays.asList(
                 SqsEventSource.Builder.create(queue)

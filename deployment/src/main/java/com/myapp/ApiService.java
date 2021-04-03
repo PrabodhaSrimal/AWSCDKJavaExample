@@ -31,6 +31,7 @@ public class ApiService extends Construct {
             .handler("com.myapp.ApiHandler::handleRequest")
             .runtime(Runtime.JAVA_8)
             .timeout(Duration.seconds(10))
+            .memorySize(512)
             .environment(new HashMap<String, String>() {
                 {
                     put("SQS_QUEUE_URL", backendQueue.getQueueUrl());
